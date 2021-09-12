@@ -19,7 +19,6 @@ class CreatePurchasesTable extends Migration
             $table->decimal('cost');
             $table->string('payment_status');
             $table->string('supplier_name');
-            $table->decimal('price');
             $table->integer('quantity');
             $table->timestamps();
         });

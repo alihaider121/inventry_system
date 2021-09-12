@@ -17,9 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('brand');
-            $table->string('type');
-            $table->integer('unit_id');
-            $table->integer('ware_house_id');
+            $table->decimal('cost');
+            $table->decimal('price');
             $table->integer('quantity');
             $table->timestamps();
         });
