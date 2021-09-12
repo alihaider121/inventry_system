@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +35,19 @@ Route::prefix('products')->group(function () {
     Route::get('/index',[ProductController::class,'index'])->name('product.index');
     Route::get('/create',[ProductController::class,'create']);
     Route::get('/{id}',[ProductController::class,'show'])->name('product.show');
+    Route::patch('/update/{id}',[ProductController::class,'update'])->name('product.update');
     Route::post('/', [ProductController::class,'store'])->name('product.store');
     Route::get('edit/{id}',[ProductController::class,'edit'])->name('product.edit');
     Route::delete('delete/{id}',[ProductController::class,'destroy'])->name('product.delete');
+});
+
+Route::prefix('purchase')->group(function () {
+    Route::get('/index',[PurchaseController::class,'index'])->name('purchase.index');
+    Route::get('/create',[PurchaseController::class,'create']);
+    Route::get('/{id}',[PurchaseController::class,'show'])->name('purchase.show');
+    Route::patch('/update/{id}',[PurchaseController::class,'update'])->name('purchase.update');
+    Route::post('/', [PurchaseController::class,'store'])->name('purchase.store');
+    Route::get('edit/{id}',[PurchaseController::class,'edit'])->name('purchase.edit');
+    Route::delete('delete/{id}',[PurchaseController::class,'destroy'])->name('purchase.delete');
 });
 

@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products=Product::latest()->paginate(2);
+        $products=Product::latest()->paginate(4);
 
         return view('product.index',['products'=>$products] );
     }
@@ -56,14 +56,17 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product=Product::find($id);
-        dd($product);
+        return response()->json($product);
 
-        //
+
     }
 
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+            $product=Product::find($id);
+            $product->update($request->all());
+            return  redirect()->route("product.index")
+            ->with('success','Product updated successfully');
     }
 
 
